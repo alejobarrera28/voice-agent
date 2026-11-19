@@ -1,0 +1,41 @@
+{
+    "name": "move_workout",
+    "description": "Moves one planned workout to a new date and time. Only call it after the athlete has explicitly confirmed the change. To swap two sessions, call it twice.",
+    "api_schema": {
+        "method": "PUT",
+        "url": "https://intervals.icu/api/v1/athlete/i807214/events/{event_id}",
+        "request_headers": {
+            "Authorization": {
+                "secret_id": "r7Jc7bm4nh9Pfwq7XsKy"
+            },
+            "Content-Type": "application/json"
+        },
+        "path_params_schema": {
+            "event_id": {
+                "type": "string",
+                "description": "The id of the workout to move, taken from list_workouts."
+            }
+        },
+        "request_body_schema": {
+            "type": "object",
+            "description": "New start of the workout.",
+            "required": [
+                "start_date_local"
+            ],
+            "properties": {
+                "start_date_local": {
+                    "type": "string",
+                    "description": "New start as local time yyyy-MM-ddTHH:mm:ss (America/Bogota), e.g. 2026-11-20T12:00:00."
+                }
+            }
+        }
+    },
+    "assignments": [],
+    "disable_interruptions": false,
+    "dynamic_variables": {
+        "dynamic_variable_placeholders": {}
+    },
+    "force_pre_tool_speech": false,
+    "response_timeout_secs": 30,
+    "type": "webhook"
+}

@@ -1,0 +1,41 @@
+{
+    "name": "list_workouts",
+    "description": "Returns the athlete's planned workouts and race/test events for a date range (each with id, name, category, start_date_local, and a description with intensity and purpose). Use it to see the athlete's training for a date range.",
+    "api_schema": {
+        "method": "GET",
+        "url": "https://intervals.icu/api/v1/athlete/i807214/events",
+        "request_headers": {
+            "Authorization": {
+                "secret_id": "r7Jc7bm4nh9Pfwq7XsKy"
+            }
+        },
+        "query_params_schema": {
+            "properties": {
+                "oldest": {
+                    "type": "string",
+                    "description": "First day of the range, inclusive, as a local date yyyy-MM-dd (America/Bogota)."
+                },
+                "newest": {
+                    "type": "string",
+                    "description": "Last day of the range, inclusive, as a local date yyyy-MM-dd (America/Bogota)."
+                },
+                "fields": {
+                    "type": "string",
+                    "constant_value": "id,name,category,start_date_local,description"
+                }
+            },
+            "required": [
+                "oldest",
+                "newest"
+            ]
+        }
+    },
+    "assignments": [],
+    "disable_interruptions": false,
+    "dynamic_variables": {
+        "dynamic_variable_placeholders": {}
+    },
+    "force_pre_tool_speech": false,
+    "response_timeout_secs": 30,
+    "type": "webhook"
+}

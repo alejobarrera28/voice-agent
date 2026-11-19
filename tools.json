@@ -14,6 +14,16 @@
             "type": "api_integration_webhook",
             "config": "tool_configs/google_calendar_check_availability.json",
             "id": "tool_4101m7rts808fd9vg1p8zy0jz56m"
+        },
+        {
+            "type": "webhook",
+            "config": "tool_configs/list_workouts.json",
+            "id": "tool_8001m7sw73h7f5tb806kwfem6wce"
+        },
+        {
+            "type": "webhook",
+            "config": "tool_configs/move_workout.json",
+            "id": "tool_7001m7sw7485fs59t9qk67keyt6a"
         }
     ]
 }
