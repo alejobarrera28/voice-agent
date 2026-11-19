@@ -1,2 +1,14 @@
 # Credentials — never commit these. Use .env.example as the tracked template.
 .env
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# OS / editor
+.DS_Store
+.vscode/
+
+# Secrets
+secrets/
