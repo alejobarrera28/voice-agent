@@ -2,6 +2,14 @@
 
 Brick — an ElevenLabs voice agent ("chief of staff" for a triathlete with a full-time job), managed as code with the ElevenLabs CLI (`agent_configs/`, `tool_configs/`, `test_configs/`).
 
+## Coach playbook (knowledge base)
+
+`knowledge/coach_playbook.md` is attached to the Coach node of Brick's workflow (full document, no RAG). After editing it, upload a new version and point the Coach node's `additional_knowledge_base` entry in `agent_configs/Brick.json` at the returned `id`:
+
+```sh
+elevenlabs agents knowledge-base documents create_from_file --file knowledge/coach_playbook.md --name "Coach Playbook"
+```
+
 ## Seeding the demo
 
 `scripts/seed.py` resets the demo Google Calendar (`brick.voice.demo@gmail.com`) and the demo intervals.icu athlete's calendar to a known scenario, with dates relative to the day it runs (timezone `America/Bogota`).
