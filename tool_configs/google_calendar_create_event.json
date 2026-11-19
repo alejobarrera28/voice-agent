@@ -1,0 +1,312 @@
+{
+    "api_integration_connection_id": "icxn_3801m7rqf7snf0aak6cc9wv3a9s4",
+    "api_integration_id": "google_calendar",
+    "api_schema_overrides": null,
+    "assignments": [],
+    "base_api_schema": {
+        "auth_connection": null,
+        "auth_resolved_params": [],
+        "content_type": "application/json",
+        "kind": "webhook",
+        "method": "POST",
+        "mtls_auth_connection": null,
+        "path_params_schema": {
+            "calendarId": {
+                "allowed_values": null,
+                "allowed_values_dynamic_variable": "",
+                "constant_value": "",
+                "description": "Calendar identifier. Use 'primary' for the user's primary calendar, or a specific calendar email address.",
+                "dynamic_variable": "",
+                "enum": null,
+                "is_omitted": false,
+                "is_system_provided": false,
+                "type": "string"
+            }
+        },
+        "query_params_schema": {
+            "properties": {
+                "conferenceDataVersion": {
+                    "allowed_values": null,
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "description": "Set to 1 to enable creating Google Meet conference data. Required when including conferenceData in the request body.",
+                    "dynamic_variable": "",
+                    "enum": null,
+                    "is_omitted": false,
+                    "is_system_provided": false,
+                    "type": "integer"
+                },
+                "sendUpdates": {
+                    "allowed_values": null,
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "description": "Who should receive email notifications: 'all' (all attendees), 'externalOnly' (non-Google attendees only), or 'none'. Defaults to 'all'.",
+                    "dynamic_variable": "",
+                    "enum": [
+                        "all",
+                        "externalOnly",
+                        "none"
+                    ],
+                    "is_omitted": false,
+                    "is_system_provided": false,
+                    "type": "string"
+                }
+            },
+            "required": []
+        },
+        "request_body_schema": {
+            "description": "Event details",
+            "dynamic_variable": "",
+            "is_omitted": false,
+            "properties": {
+                "attendees": {
+                    "constant_value": null,
+                    "description": "List of attendees for the event",
+                    "dynamic_variable": "",
+                    "is_omitted": false,
+                    "items": {
+                        "description": "Attendee details",
+                        "dynamic_variable": "",
+                        "is_omitted": false,
+                        "properties": {
+                            "displayName": {
+                                "allowed_values": null,
+                                "allowed_values_dynamic_variable": "",
+                                "constant_value": "",
+                                "description": "Display name of the attendee (optional)",
+                                "dynamic_variable": "",
+                                "enum": null,
+                                "is_omitted": false,
+                                "is_system_provided": false,
+                                "type": "string"
+                            },
+                            "email": {
+                                "allowed_values": null,
+                                "allowed_values_dynamic_variable": "",
+                                "constant_value": "",
+                                "description": "Email address of the attendee",
+                                "dynamic_variable": "",
+                                "enum": null,
+                                "is_omitted": false,
+                                "is_system_provided": false,
+                                "type": "string"
+                            },
+                            "optional": {
+                                "allowed_values": null,
+                                "allowed_values_dynamic_variable": "",
+                                "constant_value": "",
+                                "description": "Whether attendance is optional (default false)",
+                                "dynamic_variable": "",
+                                "enum": null,
+                                "is_omitted": false,
+                                "is_system_provided": false,
+                                "type": "boolean"
+                            }
+                        },
+                        "required": [
+                            "email"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "conferenceData": {
+                    "description": "Conference data to create a Google Meet link. You must also set the query parameter conferenceDataVersion=1.",
+                    "dynamic_variable": "",
+                    "is_omitted": false,
+                    "properties": {
+                        "createRequest": {
+                            "description": "Request to create a new conference",
+                            "dynamic_variable": "",
+                            "is_omitted": false,
+                            "properties": {
+                                "conferenceSolutionKey": {
+                                    "description": "Type of conference",
+                                    "dynamic_variable": "",
+                                    "is_omitted": false,
+                                    "properties": {
+                                        "type": {
+                                            "allowed_values": null,
+                                            "allowed_values_dynamic_variable": "",
+                                            "constant_value": "",
+                                            "description": "Use 'hangoutsMeet' for Google Meet",
+                                            "dynamic_variable": "",
+                                            "enum": null,
+                                            "is_omitted": false,
+                                            "is_system_provided": false,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "type"
+                                    ],
+                                    "type": "object"
+                                },
+                                "requestId": {
+                                    "allowed_values": null,
+                                    "allowed_values_dynamic_variable": "",
+                                    "constant_value": "",
+                                    "description": "Unique client-generated ID for the conference request (use any random string, e.g. a UUID)",
+                                    "dynamic_variable": "",
+                                    "enum": null,
+                                    "is_omitted": false,
+                                    "is_system_provided": false,
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "requestId",
+                                "conferenceSolutionKey"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "createRequest"
+                    ],
+                    "type": "object"
+                },
+                "description": {
+                    "allowed_values": null,
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "description": "Description or notes for the event (supports HTML)",
+                    "dynamic_variable": "",
+                    "enum": null,
+                    "is_omitted": false,
+                    "is_system_provided": false,
+                    "type": "string"
+                },
+                "end": {
+                    "description": "End time of the event",
+                    "dynamic_variable": "",
+                    "is_omitted": false,
+                    "properties": {
+                        "dateTime": {
+                            "allowed_values": null,
+                            "allowed_values_dynamic_variable": "",
+                            "constant_value": "",
+                            "description": "End date-time in RFC 3339 format (e.g. '2026-03-15T15:00:00+01:00' or '2026-03-15T14:00:00Z')",
+                            "dynamic_variable": "",
+                            "enum": null,
+                            "is_omitted": false,
+                            "is_system_provided": false,
+                            "type": "string"
+                        },
+                        "timeZone": {
+                            "allowed_values": null,
+                            "allowed_values_dynamic_variable": "",
+                            "constant_value": "",
+                            "description": "IANA time zone (e.g. 'Europe/Paris'). Used to resolve ambiguous dateTime values.",
+                            "dynamic_variable": "",
+                            "enum": null,
+                            "is_omitted": false,
+                            "is_system_provided": false,
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "dateTime"
+                    ],
+                    "type": "object"
+                },
+                "location": {
+                    "allowed_values": null,
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "description": "Geographic location or meeting room of the event",
+                    "dynamic_variable": "",
+                    "enum": null,
+                    "is_omitted": false,
+                    "is_system_provided": false,
+                    "type": "string"
+                },
+                "start": {
+                    "description": "Start time of the event",
+                    "dynamic_variable": "",
+                    "is_omitted": false,
+                    "properties": {
+                        "dateTime": {
+                            "allowed_values": null,
+                            "allowed_values_dynamic_variable": "",
+                            "constant_value": "",
+                            "description": "Start date-time in RFC 3339 format (e.g. '2026-03-15T14:00:00+01:00' or '2026-03-15T13:00:00Z')",
+                            "dynamic_variable": "",
+                            "enum": null,
+                            "is_omitted": false,
+                            "is_system_provided": false,
+                            "type": "string"
+                        },
+                        "timeZone": {
+                            "allowed_values": null,
+                            "allowed_values_dynamic_variable": "",
+                            "constant_value": "",
+                            "description": "IANA time zone (e.g. 'Europe/Paris'). Used to resolve ambiguous dateTime values.",
+                            "dynamic_variable": "",
+                            "enum": null,
+                            "is_omitted": false,
+                            "is_system_provided": false,
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "dateTime"
+                    ],
+                    "type": "object"
+                },
+                "summary": {
+                    "allowed_values": null,
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "description": "Title of the event",
+                    "dynamic_variable": "",
+                    "enum": null,
+                    "is_omitted": false,
+                    "is_system_provided": false,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "summary",
+                "start",
+                "end"
+            ],
+            "type": "object"
+        },
+        "request_headers": {},
+        "response_body_schema": null,
+        "response_filter": null,
+        "url": "https://www.googleapis.com/calendar/v3/calendars/{calendarId}/events"
+    },
+    "description": "Create a new event on a Google Calendar. This schedules an appointment or meeting with optional attendees and sends email notifications to all participants.",
+    "disable_interruptions": false,
+    "dynamic_variables": {
+        "dynamic_variable_placeholders": {}
+    },
+    "execution_mode": "immediate",
+    "force_pre_tool_speech": false,
+    "interruption_mode": "allow",
+    "name": "google_calendar_create_event",
+    "pre_tool_speech": "auto",
+    "response_filter": {
+        "content_type": "application/json",
+        "filters": [
+            "id",
+            "status",
+            "htmlLink",
+            "summary",
+            "start",
+            "end",
+            "attendees",
+            "hangoutLink",
+            "conferenceData"
+        ],
+        "mode": "allow"
+    },
+    "response_timeout_secs": 20,
+    "tool_call_sound": null,
+    "tool_call_sound_behavior": "auto",
+    "tool_error_handling_mode": "auto",
+    "tool_version": "1.0.0",
+    "type": "api_integration_webhook"
+}

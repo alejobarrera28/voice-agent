@@ -1,0 +1,162 @@
+{
+    "api_integration_connection_id": "icxn_3801m7rqf7snf0aak6cc9wv3a9s4",
+    "api_integration_id": "google_calendar",
+    "api_schema_overrides": null,
+    "assignments": [],
+    "base_api_schema": {
+        "auth_connection": null,
+        "auth_resolved_params": [],
+        "content_type": "application/json",
+        "kind": "webhook",
+        "method": "GET",
+        "mtls_auth_connection": null,
+        "path_params_schema": {
+            "calendarId": {
+                "allowed_values": null,
+                "allowed_values_dynamic_variable": "",
+                "constant_value": "",
+                "description": "Calendar identifier. Use 'primary' for the user's primary calendar, or a specific calendar email address.",
+                "dynamic_variable": "",
+                "enum": null,
+                "is_omitted": false,
+                "is_system_provided": false,
+                "type": "string"
+            }
+        },
+        "query_params_schema": {
+            "properties": {
+                "maxResults": {
+                    "allowed_values": null,
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": 3,
+                    "description": "",
+                    "dynamic_variable": "",
+                    "enum": null,
+                    "is_omitted": false,
+                    "is_system_provided": false,
+                    "type": "integer"
+                },
+                "orderBy": {
+                    "allowed_values": null,
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "description": "Sort order: 'startTime' (requires singleEvents=true) or 'updated'. Default is unspecified/stable order.",
+                    "dynamic_variable": "",
+                    "enum": [
+                        "startTime",
+                        "updated"
+                    ],
+                    "is_omitted": false,
+                    "is_system_provided": false,
+                    "type": "string"
+                },
+                "pageToken": {
+                    "allowed_values": null,
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "description": "Token for retrieving the next page of results.",
+                    "dynamic_variable": "",
+                    "enum": null,
+                    "is_omitted": false,
+                    "is_system_provided": false,
+                    "type": "string"
+                },
+                "q": {
+                    "allowed_values": null,
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "description": "Free text search terms to find events matching in summary, description, location, attendee names/emails, etc.",
+                    "dynamic_variable": "",
+                    "enum": null,
+                    "is_omitted": false,
+                    "is_system_provided": false,
+                    "type": "string"
+                },
+                "singleEvents": {
+                    "allowed_values": null,
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "description": "Whether to expand recurring events into individual instances. Each instance has its own event ID and a recurringEventId that identifies its series. Must be true when using orderBy='startTime'.",
+                    "dynamic_variable": "",
+                    "enum": null,
+                    "is_omitted": false,
+                    "is_system_provided": false,
+                    "type": "boolean"
+                },
+                "timeMax": {
+                    "allowed_values": null,
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "description": "Upper bound (exclusive) of event start time to filter by, as an RFC 3339 timestamp (e.g. '2026-03-17T00:00:00Z'). Must be an RFC3339 timestamp with mandatory time zone offset.",
+                    "dynamic_variable": "",
+                    "enum": null,
+                    "is_omitted": false,
+                    "is_system_provided": false,
+                    "type": "string"
+                },
+                "timeMin": {
+                    "allowed_values": null,
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "description": "Lower bound (inclusive) of event start time to filter by, as an RFC 3339 timestamp (e.g. '2026-03-10T00:00:00Z'). Must be an RFC3339 timestamp with mandatory time zone offset.",
+                    "dynamic_variable": "",
+                    "enum": null,
+                    "is_omitted": false,
+                    "is_system_provided": false,
+                    "type": "string"
+                },
+                "timeZone": {
+                    "allowed_values": null,
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "description": "IANA time zone for the response (e.g. 'America/New_York'). Defaults to the calendar's time zone.",
+                    "dynamic_variable": "",
+                    "enum": null,
+                    "is_omitted": false,
+                    "is_system_provided": false,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "timeMin"
+            ]
+        },
+        "request_body_schema": null,
+        "request_headers": {},
+        "response_body_schema": null,
+        "response_filter": null,
+        "url": "https://www.googleapis.com/calendar/v3/calendars/{calendarId}/events"
+    },
+    "description": "List upcoming events from a Google Calendar. Returns events within a specified time range, ordered by start time. Useful for checking what's already scheduled.",
+    "disable_interruptions": false,
+    "dynamic_variables": {
+        "dynamic_variable_placeholders": {}
+    },
+    "execution_mode": "immediate",
+    "force_pre_tool_speech": false,
+    "interruption_mode": "allow",
+    "name": "google_calendar_list_events",
+    "pre_tool_speech": "auto",
+    "response_filter": {
+        "content_type": "application/json",
+        "filters": [
+            "kind",
+            "summary",
+            "items[*].id",
+            "items[*].summary",
+            "items[*].start",
+            "items[*].end",
+            "items[*].status",
+            "items[*].attendees",
+            "items[*].recurringEventId",
+            "nextPageToken"
+        ],
+        "mode": "allow"
+    },
+    "response_timeout_secs": 20,
+    "tool_call_sound": null,
+    "tool_call_sound_behavior": "auto",
+    "tool_error_handling_mode": "auto",
+    "tool_version": "1.0.0",
+    "type": "api_integration_webhook"
+}

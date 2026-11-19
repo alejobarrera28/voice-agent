@@ -1,0 +1,121 @@
+{
+    "api_integration_connection_id": "icxn_3801m7rqf7snf0aak6cc9wv3a9s4",
+    "api_integration_id": "google_calendar",
+    "api_schema_overrides": null,
+    "assignments": [],
+    "base_api_schema": {
+        "auth_connection": null,
+        "auth_resolved_params": [],
+        "content_type": "application/json",
+        "kind": "webhook",
+        "method": "POST",
+        "mtls_auth_connection": null,
+        "path_params_schema": {},
+        "query_params_schema": null,
+        "request_body_schema": {
+            "description": "FreeBusy request body",
+            "dynamic_variable": "",
+            "is_omitted": false,
+            "properties": {
+                "items": {
+                    "constant_value": null,
+                    "description": "List of calendars to check. Use 'primary' for the main calendar.",
+                    "dynamic_variable": "",
+                    "is_omitted": false,
+                    "items": {
+                        "description": "Calendar identifier",
+                        "dynamic_variable": "",
+                        "is_omitted": false,
+                        "properties": {
+                            "id": {
+                                "allowed_values": null,
+                                "allowed_values_dynamic_variable": "",
+                                "constant_value": "",
+                                "description": "Calendar identifier. Use 'primary' for the user's primary calendar, or an email address for other calendars.",
+                                "dynamic_variable": "",
+                                "enum": null,
+                                "is_omitted": false,
+                                "is_system_provided": false,
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "id"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "timeMax": {
+                    "allowed_values": null,
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "description": "End of the time range to query, as an RFC 3339 timestamp (e.g. '2026-03-10T17:00:00Z'). Must be in UTC.",
+                    "dynamic_variable": "",
+                    "enum": null,
+                    "is_omitted": false,
+                    "is_system_provided": false,
+                    "type": "string"
+                },
+                "timeMin": {
+                    "allowed_values": null,
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "description": "Start of the time range to query, as an RFC 3339 timestamp (e.g. '2026-03-10T09:00:00Z'). Must be in UTC.",
+                    "dynamic_variable": "",
+                    "enum": null,
+                    "is_omitted": false,
+                    "is_system_provided": false,
+                    "type": "string"
+                },
+                "timeZone": {
+                    "allowed_values": null,
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "description": "IANA time zone for interpreting times (e.g. 'America/New_York'). Defaults to UTC if not specified.",
+                    "dynamic_variable": "",
+                    "enum": null,
+                    "is_omitted": false,
+                    "is_system_provided": false,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "timeMin",
+                "timeMax",
+                "items"
+            ],
+            "type": "object"
+        },
+        "request_headers": {},
+        "response_body_schema": null,
+        "response_filter": null,
+        "url": "https://www.googleapis.com/calendar/v3/freeBusy"
+    },
+    "description": "Check free/busy availability for one or more Google Calendars within a time range. Returns busy time blocks so you can find open slots. Use this before creating events to avoid conflicts.",
+    "disable_interruptions": false,
+    "dynamic_variables": {
+        "dynamic_variable_placeholders": {}
+    },
+    "execution_mode": "immediate",
+    "force_pre_tool_speech": false,
+    "interruption_mode": "allow",
+    "name": "google_calendar_check_availability",
+    "pre_tool_speech": "auto",
+    "response_filter": {
+        "content_type": "application/json",
+        "filters": [
+            "kind",
+            "timeMin",
+            "timeMax",
+            "calendars"
+        ],
+        "mode": "allow"
+    },
+    "response_timeout_secs": 20,
+    "tool_call_sound": null,
+    "tool_call_sound_behavior": "auto",
+    "tool_error_handling_mode": "auto",
+    "tool_version": "1.0.0",
+    "type": "api_integration_webhook"
+}

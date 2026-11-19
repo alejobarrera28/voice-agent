@@ -1,3 +1,19 @@
 {
-    "tools": []
+    "tools": [
+        {
+            "type": "api_integration_webhook",
+            "config": "tool_configs/google_calendar_list_events.json",
+            "id": "tool_1801m7rts8wqfvpaq6a2k0621jt2"
+        },
+        {
+            "type": "api_integration_webhook",
+            "config": "tool_configs/google_calendar_create_event.json",
+            "id": "tool_7901m7rts8f7fqtrjqbmh8xz31he"
+        },
+        {
+            "type": "api_integration_webhook",
+            "config": "tool_configs/google_calendar_check_availability.json",
+            "id": "tool_4101m7rts808fd9vg1p8zy0jz56m"
+        }
+    ]
 }
