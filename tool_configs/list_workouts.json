@@ -1,41 +1,79 @@
 {
-    "name": "list_workouts",
-    "description": "Returns the athlete's planned workouts and race/test events for a date range (each with id, name, category, start_date_local, and a description with intensity and purpose). Use it to see the athlete's training for a date range.",
     "api_schema": {
+        "auth_connection": null,
+        "auth_resolved_params": [],
+        "content_type": "application/json",
+        "kind": "webhook",
         "method": "GET",
-        "url": "https://intervals.icu/api/v1/athlete/i807214/events",
-        "request_headers": {
-            "Authorization": {
-                "secret_id": "r7Jc7bm4nh9Pfwq7XsKy"
-            }
-        },
+        "mtls_auth_connection": null,
+        "path_params_schema": {},
         "query_params_schema": {
             "properties": {
-                "oldest": {
-                    "type": "string",
-                    "description": "First day of the range, inclusive, as a local date yyyy-MM-dd (America/Bogota)."
+                "fields": {
+                    "allowed_values": null,
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "id,name,category,start_date_local,description",
+                    "description": "",
+                    "dynamic_variable": "",
+                    "enum": null,
+                    "is_omitted": false,
+                    "is_system_provided": false,
+                    "type": "string"
                 },
                 "newest": {
-                    "type": "string",
-                    "description": "Last day of the range, inclusive, as a local date yyyy-MM-dd (America/Bogota)."
+                    "allowed_values": null,
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "description": "Last day of the range, inclusive, as a local date yyyy-MM-dd (America/Bogota).",
+                    "dynamic_variable": "",
+                    "enum": null,
+                    "is_omitted": false,
+                    "is_system_provided": false,
+                    "type": "string"
                 },
-                "fields": {
-                    "type": "string",
-                    "constant_value": "id,name,category,start_date_local,description"
+                "oldest": {
+                    "allowed_values": null,
+                    "allowed_values_dynamic_variable": "",
+                    "constant_value": "",
+                    "description": "First day of the range, inclusive, as a local date yyyy-MM-dd (America/Bogota).",
+                    "dynamic_variable": "",
+                    "enum": null,
+                    "is_omitted": false,
+                    "is_system_provided": false,
+                    "type": "string"
                 }
             },
             "required": [
                 "oldest",
                 "newest"
             ]
-        }
+        },
+        "request_body_schema": null,
+        "request_headers": {
+            "Authorization": {
+                "secret_id": "r7Jc7bm4nh9Pfwq7XsKy"
+            }
+        },
+        "response_body_schema": null,
+        "response_filter": null,
+        "url": "https://intervals.icu/api/v1/athlete/i807214/events"
     },
     "assignments": [],
+    "description": "Returns the athlete's planned workouts and race/test events for a date range (each with id, name, category, start_date_local, and a description with intensity and purpose). Use it to see the athlete's training for a date range.",
     "disable_interruptions": false,
     "dynamic_variables": {
         "dynamic_variable_placeholders": {}
     },
+    "execution_mode": "immediate",
+    "follow_redirects": false,
+    "follow_redirects_allowed_domains": [],
     "force_pre_tool_speech": false,
+    "interruption_mode": "allow",
+    "name": "list_workouts",
+    "pre_tool_speech": "auto",
     "response_timeout_secs": 30,
+    "tool_call_sound": null,
+    "tool_call_sound_behavior": "auto",
+    "tool_error_handling_mode": "auto",
     "type": "webhook"
 }
