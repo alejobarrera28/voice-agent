@@ -24,6 +24,11 @@
             "type": "webhook",
             "config": "tool_configs/move_workout.json",
             "id": "tool_7001m7sw7485fs59t9qk67keyt6a"
+        },
+        {
+            "type": "api_integration_webhook",
+            "config": "tool_configs/jira_search_issues.json",
+            "id": "tool_1901m7szrjsxer5a2w4az2hahb31"
         }
     ]
 }
