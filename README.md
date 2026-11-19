@@ -10,6 +10,10 @@ Brick — an ElevenLabs voice agent ("chief of staff" for a triathlete with a fu
 elevenlabs agents knowledge-base documents create_from_file --file knowledge/coach_playbook.md --name "Coach Playbook"
 ```
 
+## Golden-path QA
+
+`scripts/qa_golden_path.py <label>` reseeds everything, runs the scripted 5-turn text conversation against Brick (real tool calls), and prints the transcript plus intervals.icu before and after. Results so far are in `docs/qa_log.md`.
+
 ## Seeding the demo
 
 `scripts/seed.py` resets the demo Google Calendar (`brick.voice.demo@gmail.com`) and the demo intervals.icu athlete's calendar to a known scenario, with dates relative to the day it runs (timezone `America/Bogota`).
