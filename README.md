@@ -4,9 +4,9 @@ Brick — an ElevenLabs voice agent ("chief of staff" for a triathlete with a fu
 
 ## Seeding the demo
 
-`scripts/seed.py` resets the demo Google Calendar (`brick.voice.demo@gmail.com`) to a known scenario, with dates relative to the day it runs (timezone `America/Bogota`).
+`scripts/seed.py` resets the demo Google Calendar (`brick.voice.demo@gmail.com`) and the demo intervals.icu athlete's calendar to a known scenario, with dates relative to the day it runs (timezone `America/Bogota`).
 
-It deletes **every** event from 3 days ago through 21 days ahead (including reminders Brick created during rehearsals), then creates the scenario events, each tagged with `extendedProperties.private.brick_seed=true`. It refuses to run against any calendar other than the demo account.
+On both, it deletes **every** event from 3 days ago through 21 days ahead (including anything Brick created during rehearsals), then creates the scenario events. Google events are tagged with `extendedProperties.private.brick_seed=true`; intervals.icu events get an `external_id` starting with `brick-seed-`. It refuses to run against any Google calendar other than the demo account. intervals.icu needs `INTERVALS_API_KEY` and `INTERVALS_ATHLETE_ID` in `.env`.
 
 Setup (once):
 
@@ -26,4 +26,4 @@ Run:
 .venv/bin/python scripts/seed.py --wipe-only  # just clear the window
 ```
 
-Edit `SCENARIO` at the top of the script to change the events. New sources (intervals.icu, Jira) go in as another `seed_<name>()` function. Run it from the repo root (paths in `.env` are relative to it).
+Edit `SCENARIO` at the top of the script to change the events. New sources (e.g. Jira) go in as another `seed_<name>()` function. Run it from the repo root (paths in `.env` are relative to it).
